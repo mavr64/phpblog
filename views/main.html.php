@@ -73,7 +73,10 @@
 <?php 
 	}
     else{?>
-        <div class="nav"><a href="index.php?c=login">Авторизация</a></div>
+        <div class="nav">
+			<a href="/user/sign-up"><b>  SignUp</a><br />
+			( <a href="/user/sign-in">SignIn</a> )</b>
+		</div>
 <?php 
 	}
 ?></li>

@@ -1,0 +1,30 @@
+<?php
+
+class UserModel 
+{
+	private $db;
+	private $table = 'users';
+	
+	public function __construct(PDO $db)
+	{
+		$this->db = $db;
+	}
+	
+	public function getAll($params = [])
+	{
+		$sql = sprintf('SELECT * FROM `%s` ORDER BY `id_user` ASC', $this->table);
+		$query = $this->db->prepare($sql);
+		$query->execute($params);
+		return $query->fetchAll();
+	}
+	
+	public function getOne_byId($id)
+	{
+		$sql = sprintf('SELECT * FROM `%s` WHERE `id_user` = :id', $this->table);
+		$params = ['id' => $id];
+		$query = $this->db->prepare($sql);
+		$query->execute($params);
+		return $query->fetch();
+
+	}
+}

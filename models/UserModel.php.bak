@@ -1,0 +1,10 @@
+<?php
+include_once(__DIR__ . '/BaseModel.php');
+
+class UserModel extends BaseModel
+{
+	public function __construct(PDO $db)
+	{
+		parent::__construct($db, 'users', 'id_user');
+	}
+}

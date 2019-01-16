@@ -44,14 +44,19 @@ abstract class BaseModel
         return $query;
 	}
 
-    public function add(array $params)
+    public function add(array $params, $needValidation = true)
     {
-        $this->validator->execute($params);
-        if(!$this->validator->success)
+        if($needValidation)
         {
-            // обработка ошибки
-            throw new ModelIncorrectValidatorException($this->validator->errors);
-            $this->validator->errors;
+            $this->validator->execute($params);
+            if(!$this->validator->success)
+            {
+                // обработка ошибки
+                throw new ModelIncorrectValidatorException($this->validator->errors);
+                $this->validator->errors;
+            }
+
+            $params = $this->validator->clean;
         }
         $query = $this->db->insert($this->table, $params);
         return $query;

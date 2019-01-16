@@ -72,6 +72,16 @@ session_start();
         }
 
         $action = isset($uriParts[1]) && $uriParts[1] !== '' && !is_numeric($uriParts[1]) ? $uriParts[1] : 'index';
+        
+        $actionParts = explode('-', $action);
+        for($i = 1; $i < count($actionParts); $i++){
+            if(!isset($actionParts[$i])){
+                continue;
+            };
+
+            $actionParts[$i] = ucfirst($actionParts[$i]);
+        }
+        $action = implode('', $actionParts);
         $action = sprintf('%sAction', $action);
 
     /*		$action = isset($uriParts[1]) && $uriParts[1] !== '' && is_string($uriParts[1]) ? $uriParts[1] : 'index';

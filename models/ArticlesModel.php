@@ -7,7 +7,6 @@ use core\Validator;
 
 class ArticlesModel extends BaseModel
 {
-    protected $validator;
     protected $schema = [
         'id' => [
             'type' => Validator::TYPE_INTEGER,

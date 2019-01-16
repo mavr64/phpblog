@@ -1,0 +1,10 @@
+<?php
+include_once(__DIR__ . '/BaseModel.php');
+
+class ArticlesModel extends BaseModel
+{
+	public function __construct(PDO $db)
+	{
+		parent::__construct($db, 'articles', 'id_article');
+	}
+}
